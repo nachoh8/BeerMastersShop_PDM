@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#F6C101</color>
+    <color name="colorAccent">#000000</color-->
+
+    <color name="colorPrimary">#ffd34f</color>
+    <color name="primaryLightColor">#ffff81</color>
+    <color name="colorPrimaryDark">#c8a216</color>
+    <color name="colorAccent">#000000</color>
+
+    <color name="snackbar_action">#FF0000</color>
+    <color name="color_beer">#F6C101</color>
+    <color name="color_bt_white">#FFFFFFFF</color>
+    <color name="prod_enabled">#2FFF00</color>
+    <color name="prod_disabled">#FF0000</color>
+
+    <color name="review_opinion_error">#FF0000</color>
+
+    <color name="bt_lock">#5C5555</color>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_sort_white_36dp"
+        android:title="@string/filter_products"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/action_sort_recent"
+                android:title="@string/latest_orders"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/action_sort_older"
+                android:title="@string/older_orders"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
+</menu>

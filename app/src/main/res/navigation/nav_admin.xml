@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_admin"
+    app:startDestination="@id/nav_all">
+
+    <fragment
+        android:id="@+id/nav_all"
+        android:name="com.nachohseara.beermastersshop.ui.home.mainhome.MainHomeFragment"
+        android:label="@string/n_all"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_all_to_filterFragment"
+            app:destination="@id/filterFragment" />
+        <action
+            android:id="@+id/action_home_to_prod_page"
+            app:destination="@id/productPageFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_navall_to_addProduct"
+            app:destination="@id/editProductFragment"
+            app:popUpTo="@id/editProductFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.nachohseara.beermastersshop.ui.home.filter.FilterFragment"
+        android:label="Filter"
+        tools:layout="@layout/fragment_filter">
+        <action
+            android:id="@+id/action_filterFragment_to_nav_all"
+            app:destination="@id/nav_all"
+            app:popUpTo="@id/nav_all"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_filterFragment_to_listFragment"
+            app:destination="@id/listFragment2" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.nachohseara.beermastersshop.ui.home.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_change_pwd"
+            app:destination="@id/nav_change_pwd" />
+        <action
+            android:id="@+id/action_nav_profile_to_mainActivity"
+            app:destination="@id/mainActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productPageFragment"
+        android:name="com.nachohseara.beermastersshop.ui.home.mainhome.ProductPageFragment"
+        android:label="Product Details"
+        tools:layout="@layout/fragment_product_page" >
+        <action
+            android:id="@+id/action_prodpage_to_editproduct"
+            app:destination="@id/editProductFragment" />
+        <action
+            android:id="@+id/action_productPageFragment_to_reviewListFragment"
+            app:destination="@id/reviewListFragment2" />
+        <action
+            android:id="@+id/action_productPageFragment_to_nav_all"
+            app:destination="@id/nav_all"
+            app:popUpTo="@id/nav_all"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_change_pwd"
+        android:name="com.nachohseara.beermastersshop.ui.home.profile.ChangePwdFragment"
+        android:label="Change Password"
+        tools:layout="@layout/fragment_changepwd" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.nachohseara.beermastersshop.ui.account.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/editProductFragment"
+        android:name="com.nachohseara.beermastersshop.ui.home.editproduc.EditProductFragment"
+        android:label="@string/edit_product"
+        tools:layout="@layout/fragment_edit_product" >
+        <action
+            android:id="@+id/action_editprod_to_prodpage"
+            app:destination="@id/productPageFragment"
+            app:popUpTo="@id/productPageFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_editProductFragment_to_brandsFragment"
+            app:destination="@id/brandsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewListFragment2"
+        android:name="com.nachohseara.beermastersshop.ui.home.reviews.ReviewListFragment"
+        android:label="Reviews"
+        tools:layout="@layout/fragment_review_list" />
+    <fragment
+        android:id="@+id/listFragment2"
+        android:name="com.nachohseara.beermastersshop.ui.home.filter.ListFragment"
+        android:label="List"
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_listFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:popUpTo="@id/filterFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/brandsFragment"
+        android:name="com.nachohseara.beermastersshop.ui.home.editproduc.BrandsFragment"
+        android:label="Brands"
+        tools:layout="@layout/fragment_brands">
+        <action
+            android:id="@+id/action_brandsFragment_to_editProductFragment"
+            app:destination="@id/editProductFragment"
+            app:popUpTo="@id/editProductFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/payments_history"
+        android:name="com.nachohseara.beermastersshop.ui.home.payments.PaymentsHistoryFragment"
+        android:label="Payments History"
+        tools:layout="@layout/fragment_payments_history" />
+    <fragment
+        android:id="@+id/nav_payments"
+        android:name="com.nachohseara.beermastersshop.ui.home.payments.SearchPaymentsFragment"
+        android:label="Payments"
+        tools:layout="@layout/fragment_search_payments">
+        <action
+            android:id="@+id/action_searchPaymentsFragment_to_nav_payments"
+            app:destination="@id/payments_history" />
+    </fragment>
+</navigation>

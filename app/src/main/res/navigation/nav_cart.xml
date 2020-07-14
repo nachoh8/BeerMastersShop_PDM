@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_cart"
+    app:startDestination="@id/nav_cart_list">
+
+    <fragment
+        android:id="@+id/nav_cart_list"
+        android:name="com.nachohseara.beermastersshop.ui.cart.CartListFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cart_to_prod_page"
+            app:destination="@id/productPageFragment2"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_cart_to_pwd"
+            app:destination="@id/pwdFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/pwdFragment2"
+        android:name="com.nachohseara.beermastersshop.ui.account.PwdFragment"
+        android:label="Authentication"
+        tools:layout="@layout/fragment_pwd" >
+        <action
+            android:id="@+id/action_pwd_to_address"
+            app:destination="@id/nav_address" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_address"
+        android:name="com.nachohseara.beermastersshop.ui.cart.AddressFragment"
+        android:label="Shipping Address"
+        tools:layout="@layout/fragment_address">
+        <action
+            android:id="@+id/action_address_to_confirm"
+            app:destination="@id/confirmOrder" />
+    </fragment>
+    <fragment
+        android:id="@+id/productPageFragment2"
+        android:name="com.nachohseara.beermastersshop.ui.home.mainhome.ProductPageFragment"
+        android:label="Product Details"
+        tools:layout="@layout/fragment_product_page" >
+        <action
+            android:id="@+id/action_productPageFragment_to_reviewListFragment"
+            app:destination="@id/reviewListFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmOrder"
+        android:name="com.nachohseara.beermastersshop.ui.cart.ConfirmOrderFragment"
+        android:label="Confirm Order"
+        tools:layout="@layout/fragment_confirm_order">
+        <action
+            android:id="@+id/action_confirmOrder_to_orderCompletedActivity"
+            app:destination="@id/orderCompletedActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/orderCompletedActivity"
+        android:name="com.nachohseara.beermastersshop.ui.cart.OrderCompletedActivity"
+        android:label="activity_order_completed"
+        tools:layout="@layout/activity_order_completed" />
+    <fragment
+        android:id="@+id/reviewListFragment4"
+        android:name="com.nachohseara.beermastersshop.ui.home.reviews.ReviewListFragment"
+        android:label="fragment_review_list"
+        tools:layout="@layout/fragment_review_list" >
+        <action
+            android:id="@+id/action_reviewListFragment_to_writeReviewFragment"
+            app:destination="@id/writeReviewFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/writeReviewFragment3"
+        android:name="com.nachohseara.beermastersshop.ui.home.reviews.WriteReviewFragment"
+        android:label="fragment_write_review"
+        tools:layout="@layout/fragment_write_review" >
+        <action
+            android:id="@+id/action_writeReviewFragment_to_reviewListFragment"
+            app:destination="@id/reviewListFragment4"
+            app:popUpTo="@id/reviewListFragment4"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="nav_view">
+
+    <group android:id="@+id/user_menu"
+        android:checkableBehavior="single">
+
+    </group>
+    <group
+        android:id="@+id/shop_menu"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_top_sales"
+            android:title="@string/n_top_sales" />
+        <item
+            android:id="@+id/nav_all"
+            android:title="@string/n_all" />
+
+    </group>
+
+    <group
+        android:id="@+id/menu_merchant"
+        android:checkableBehavior="single"
+        android:visible="false">
+        <item
+            android:id="@+id/nav_payments"
+            android:title="@string/n_payments" />
+    </group>
+
+    <group android:id="@+id/menu_profile"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_orders"
+            android:title="@string/n_history" />
+        <item
+            android:id="@+id/nav_profile"
+            android:title="@string/n_profile" />
+    </group>
+</menu>
