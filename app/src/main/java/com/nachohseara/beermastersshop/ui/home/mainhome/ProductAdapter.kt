@@ -76,9 +76,9 @@ class ProductAdapter(l: List<Product>, c: Context, con: MainHomeController) :
         val prod = pList[position]
         holder.adapter = this
         holder.setData(prod)
-        if (holder.bitmap != null) {
+        /*if (holder.bitmap != null) {
             holder.img.setImageBitmap(holder.bitmap)
-        } else {
+        } else {*/
             if (prod.getImgUrl().isEmpty()) return
             Picasso.get().load(prod.getImgUrl()).into(holder.img, object: Callback {
                 override fun onSuccess() {
@@ -90,7 +90,7 @@ class ProductAdapter(l: List<Product>, c: Context, con: MainHomeController) :
                 }
 
             })
-        }
+        //}
     }
 
     fun onClick(pos: Int) {

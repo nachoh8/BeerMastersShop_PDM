@@ -30,7 +30,7 @@ class BrandsController(private val myView: BrandsFragment) : IFBConnector {
     }
 
     private fun loadBrands() {
-        myView.showList(bc.brands.values.toList())
+        myView.showList(BrandsCountries.getBrandsSorted(bc))
     }
 
     fun isEmpty() : Boolean = bc.brands.isEmpty()

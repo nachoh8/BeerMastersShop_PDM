@@ -51,7 +51,7 @@ class DBProducts(c: IFBConnector) {
     private val activeProds = db.collection(PRODUCTS_COLLECTION).whereEqualTo(FIELD_ACTIVE, true)
     private val topSales = allProds.orderBy(FIELD_SALES, Query.Direction.DESCENDING)
 
-    fun getTopSales(filter: FilterProduct = FilterProduct.default(), limit: Long = 15) {
+    fun getTopSales(filter: FilterProduct = FilterProduct.default(), limit: Long = 8) {
         val query = topSales.limit(limit)
         if (filter.isDefault()) {
             execute(query)

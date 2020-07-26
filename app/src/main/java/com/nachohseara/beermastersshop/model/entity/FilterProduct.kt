@@ -21,7 +21,14 @@ data class Brand(val id: String, val name: String, val country: String, val num:
     }
 }
 data class Country(val name: String, var num: Int)
-data class BrandsCountries(val brands: HashMap<String, Brand>, val countries: HashMap<String, Country>)
+data class BrandsCountries(val brands: HashMap<String, Brand>, val countries: HashMap<String, Country>) {
+    companion object {
+        fun getBrandsSorted(data: BrandsCountries) : List<Brand> {
+            val brands = data.brands.values.toList()
+            return brands.sortedBy { it.name }
+        }
+    }
+}
 
 class FilterProduct(var sortBy: Int, var filterBy: Int, var fList: MutableSet<String>) {
     companion object {
@@ -111,7 +118,7 @@ class FilterProduct(var sortBy: Int, var filterBy: Int, var fList: MutableSet<St
             l.add(ListItem(c, checked, num))
         }
 
-        return l.toList()
+        return l.toList().sortedBy { it.item }
     }
 
     fun toListOfCountries(bc: BrandsCountries) : List<ListItem> {
@@ -123,7 +130,7 @@ class FilterProduct(var sortBy: Int, var filterBy: Int, var fList: MutableSet<St
             l.add(ListItem(c, checked, num))
         }
 
-        return l.toList()
+        return l.toList().sortedBy { it.item }
     }
 
     fun listToStr() : String {
