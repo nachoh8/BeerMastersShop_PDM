@@ -15,6 +15,7 @@ import com.nachohseara.beermastersshop.model.entity.Product
 class PaymentAdapter(private val orders: List<PaymentOrder>, private val ctxt: Context, private val controller: PaymentsHistoryController) :
     RecyclerView.Adapter<PaymentAdapter.PaymentOrderViewHolder>() {
     private var expanded: PaymentOrderViewHolder? = null
+    private val expand: MutableList<Boolean> = mutableListOf()
 
     class PaymentOrderViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
         lateinit var adapter: PaymentAdapter
@@ -29,7 +30,8 @@ class PaymentAdapter(private val orders: List<PaymentOrder>, private val ctxt: C
 
         init {
             v.setOnClickListener {
-                adapter.anyExpand(this)
+                expand_collapse()
+                //adapter.anyExpand(this)
             }
             v.setOnLongClickListener {
                 adapter.onLongClick(adapterPosition)
@@ -45,17 +47,30 @@ class PaymentAdapter(private val orders: List<PaymentOrder>, private val ctxt: C
             val txt = "${order.brand} - ${order.nazione}"
             txtBrandCard.text = txt
             txtPan.text = order.pan
+
+            setExpand(adapter.expand[adapterPosition])
         }
 
         fun expand_collapse() {
+            adapter.expand[adapterPosition] = !adapter.expand[adapterPosition]
+            setExpand(adapter.expand[adapterPosition])
+        }
+
+        private fun setExpand(set: Boolean) {
             val expandLayout: ConstraintLayout = v.findViewById(R.id.expandLayout)
-            if (expandLayout.visibility == View.VISIBLE) {
-                expandLayout.visibility = View.GONE
-                imgArrow.setImageResource(R.drawable.ic_expand_more_black_24dp)
-            } else {
+            if (set) {
                 expandLayout.visibility = View.VISIBLE
                 imgArrow.setImageResource(R.drawable.ic_expand_less_black_24dp)
+            } else {
+                expandLayout.visibility = View.GONE
+                imgArrow.setImageResource(R.drawable.ic_expand_more_black_24dp)
             }
+        }
+    }
+
+    init {
+        for (i in orders.indices) {
+            expand.add(false)
         }
     }
 

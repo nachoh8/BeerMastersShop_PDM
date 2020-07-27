@@ -18,6 +18,7 @@ import com.nachohseara.beermastersshop.ui.cart.ProdListAdapter
 class OrderAdapter(private val orders: List<OrderData>, private val ctxt: Context) :
     RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
     private var expanded: OrderViewHolder? = null
+    private val expand: MutableList<Boolean> = mutableListOf()
 
     class OrderViewHolder(private val v: View) : RecyclerView.ViewHolder(v) {
         lateinit var adapter: OrderAdapter
@@ -59,18 +60,30 @@ class OrderAdapter(private val orders: List<OrderData>, private val ctxt: Contex
                 val adapter = ProdListAdapter(order.prods, adapter.ctxt)
                 rView.adapter = adapter
             }
+
+            setExpand(adapter.expand[adapterPosition])
         }
 
         fun expand_collapse() {
-            val orderExpandLayout: ConstraintLayout = v.findViewById(R.id.orderExpandLayout)
+            adapter.expand[adapterPosition] = !adapter.expand[adapterPosition]
+            setExpand(adapter.expand[adapterPosition])
+        }
 
-            if (orderExpandLayout.visibility == View.VISIBLE) {
-                orderExpandLayout.visibility = View.GONE
-                imgArrow.setImageResource(R.drawable.ic_expand_more_black_24dp)
-            } else {
+        private fun setExpand(set: Boolean) {
+            val orderExpandLayout: ConstraintLayout = v.findViewById(R.id.orderExpandLayout)
+            if (set) {
                 orderExpandLayout.visibility = View.VISIBLE
                 imgArrow.setImageResource(R.drawable.ic_expand_less_black_24dp)
+            } else {
+                orderExpandLayout.visibility = View.GONE
+                imgArrow.setImageResource(R.drawable.ic_expand_more_black_24dp)
             }
+        }
+    }
+
+    init {
+        for (i in orders.indices) {
+            expand.add(false)
         }
     }
 
