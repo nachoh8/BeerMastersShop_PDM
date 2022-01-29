@@ -14,8 +14,8 @@ import java.io.UnsupportedEncodingException
 class XPayModel(c: Context) {
     companion object {
         const val TIMEOUT = 2000 //2sec
-        const val ALIAS = "ALIAS_WEB_00023966"
-        const val SECRET_KEY = "I0PMPJNQYFWW0XCKDMK2V1RCAU94EKK2"
+        const val ALIAS = "XXXXX"
+        const val SECRET_KEY = "XXXXXX"
         val ENVIRONMENT = EnvironmentUtils.Environment.TEST
         const val TAG = "XPAY"
     }
